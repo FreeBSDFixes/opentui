@@ -50,6 +50,7 @@ const variants: Variant[] = [
   { platform: "linux", arch: "arm64" },
   { platform: "win32", arch: "x64" },
   { platform: "win32", arch: "arm64" },
+  { platform: "freebsd", arch: "x64" },
 ]
 
 const getHostVariant = (): Variant => {
@@ -67,7 +68,7 @@ if (!buildLib && !buildNative) {
 }
 
 const getZigTarget = (platform: string, arch: string): string => {
-  const platformMap: Record<string, string> = { darwin: "macos", win32: "windows", linux: "linux" }
+  const platformMap: Record<string, string> = { darwin: "macos", win32: "windows", linux: "linux", freebsd: "freebsd" }
   const archMap: Record<string, string> = { x64: "x86_64", arm64: "aarch64" }
   return `${archMap[arch] ?? arch}-${platformMap[platform] ?? platform}`
 }
